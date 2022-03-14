@@ -19,7 +19,7 @@ const Sums: React.FC = (): React.ReactElement => {
 
   return (
     <Grid container alignItems='center' className={styles.btn_container}>
-      <Button variant='contained' onClick={() => createExamples()}>
+      <Button variant='contained' onClick={() => createExamples(2, 50)}>
         примеры 2 класс
       </Button>
       <Button variant='contained' onClick={() => createExamples(2, 1000)} style={{ marginLeft: '10px' }}>
