@@ -16,7 +16,7 @@ import { RouteNames } from '../../routes'
 
 const Header: React.FC = (): React.ReactElement => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [isDrownerVisible, setIsDrownerVisible] = useState(false)
+  const [isDrownerVisible, setIsDrownerVisible] = useState(true)
 
   const navigate = useNavigate()
 

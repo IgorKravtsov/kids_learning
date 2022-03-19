@@ -1,12 +1,12 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { BookRoutes, RouteNames } from './routes'
 
-import Home from './pages/Home/Index'
-import Math from './pages/Math/Index'
-import Ukrainian from './pages/Ukrainian/Index'
-import Russian from './pages/Russian/Index'
-import Art from './pages/Art/Index'
+import Home from './pages/Home/Home'
+import Math from './pages/Math/Math'
+import Ukrainian from './pages/Ukrainian/Ukrainian'
+import Russian from './pages/Russian/Russian'
+import Art from './pages/Art/Art'
 import MathBooks from './pages/Math/books/Books'
 import Sums from './pages/Math/sums/Sums'
 
@@ -25,7 +25,7 @@ const AppRouter: React.FC = (): React.ReactElement => {
       <Route path={RouteNames.RUSSIAN} element={<Russian />}></Route>
 
       <Route path={RouteNames.ART} element={<Art />}></Route>
-      <Route path='*' element={<h1>Not found</h1>} />
+      <Route path='*' element={<Navigate to={RouteNames.HOME} replace />} />
     </Routes>
   )
 }
