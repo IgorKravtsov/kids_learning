@@ -8,7 +8,7 @@ import Ukrainian from './pages/Ukrainian/Ukrainian'
 import Russian from './pages/Russian/Russian'
 import Art from './pages/Art/Art'
 import MathBooks from './pages/Math/books/Books'
-import Sums from './pages/Math/sums/Sums'
+import MathSums from './pages/Math/sums/Sums'
 
 const AppRouter: React.FC = (): React.ReactElement => {
   return (
@@ -17,7 +17,7 @@ const AppRouter: React.FC = (): React.ReactElement => {
 
       <Route path={RouteNames.MATH} element={<Math />}>
         <Route path={'books'} element={<MathBooks />} />
-        <Route path={'sums'} element={<Sums />} />
+        <Route path={'sums'} element={<MathSums />} />
       </Route>
 
       <Route path={RouteNames.UKRAINIAN} element={<Ukrainian />}></Route>

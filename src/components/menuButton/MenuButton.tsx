@@ -17,7 +17,10 @@ export interface ToggleButtonProps extends ButtonBaseProps {
   onClick: () => void
 }
 
-const MenuButton: React.FC<ToggleButtonProps> = ({ options, onClick, setCurrentOption, style, children }): React.ReactElement => {
+const MenuButton: React.FC<ToggleButtonProps> = (
+  { options, onClick, setCurrentOption, style, children, className },
+  otherProps
+): React.ReactElement => {
   const [open, setOpen] = useState(false)
   const anchorRef = React.useRef<HTMLDivElement>(null)
   const [selectedIndex, setSelectedIndex] = React.useState(1)
@@ -42,7 +45,7 @@ const MenuButton: React.FC<ToggleButtonProps> = ({ options, onClick, setCurrentO
 
   return (
     <>
-      <ButtonGroup style={style} variant='contained' ref={anchorRef} aria-label='split button'>
+      <ButtonGroup style={style} variant='contained' ref={anchorRef} aria-label='split button' className={className} {...otherProps}>
         {/* <Button onClick={onClick}>примеры 2 класс ({options[selectedIndex]})</Button> */}
         <Button onClick={onClick}>{children}</Button>
         <Button
