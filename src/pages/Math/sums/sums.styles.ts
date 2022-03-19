@@ -6,7 +6,7 @@ export const useSumsStyles = makeStyles({
     marginLeft: '10px',
   },
   sumsContainer: {
-    marginTop: '20px',
+    marginTop: '10px',
   },
   sum: {
     fontWeight: 300,

@@ -4,11 +4,15 @@ import styles from './sums.module.scss'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 import MenuButton from '../../../components/menuButton/MenuButton'
-import { createPlusMultipleExamples, createMinusExamples } from './utils/generateSums'
 import { MathSums } from '../types/math.interface'
 import { useSumsStyles } from './sums.styles'
+import { createPlusExamples } from './utils/plus'
+import { createMinusExamples } from './utils/minus'
+import { createMultipleExamples } from './utils/multiple'
+import { createDivideExamples } from './utils/divide'
 
 const mathOperations = ['+', '-', '*', ':', 'все']
 const mathOperations2Form = ['+', '-', 'все']
@@ -24,39 +28,34 @@ const Sums: React.FC = (): React.ReactElement => {
   const [depth4Form, setDepth4Form] = useState(2)
 
   const [nowFormDepth, setNowFormDepth] = useState<number>(0)
+  const [isAnswersVisible, setIsAnswersVisible] = useState(false)
 
   const createExamples = (depth = 2, maxNumber = 99, type = '+') => {
     if (depth < 2) depth = 2
 
-    if (type === 'все') {
-    } else if (type === 'x') {
-      type = '*'
-    } else if (type === ':') {
-      type = '/'
-    }
     const res: MathSums[] = []
     switch (type) {
       case '+':
         for (let i = 0; i < 32; i++) {
-          res.push(createPlusMultipleExamples(depth, maxNumber, type))
+          res.push(createPlusExamples(depth, maxNumber))
         }
         break
 
       case '-':
         for (let i = 0; i < 32; i++) {
-          res.push(createMinusExamples(depth, maxNumber, type))
+          res.push(createMinusExamples(depth, maxNumber))
         }
         break
 
       case '*':
         for (let i = 0; i < 32; i++) {
-          res.push(createPlusMultipleExamples(depth, maxNumber, type))
+          res.push(createMultipleExamples(depth, maxNumber))
         }
         break
 
       case '/':
         for (let i = 0; i < 32; i++) {
-          res.push(createMinusExamples(depth, maxNumber, type))
+          res.push(createDivideExamples(depth, maxNumber))
         }
         break
 
@@ -65,6 +64,10 @@ const Sums: React.FC = (): React.ReactElement => {
     }
 
     setSums(res)
+  }
+
+  const showAnswers = () => {
+    setIsAnswersVisible(prevState => !prevState)
   }
 
   return (
@@ -126,12 +129,17 @@ const Sums: React.FC = (): React.ReactElement => {
       <Grid container className={classes.sumsContainer}>
         {sums.map((sum, i) => (
           <Grid key={sum.example} item xs={2 + nowFormDepth}>
-            <Typography className={classes.sum}>
-              {i + 1}) {sum.example}=
+            <Typography key={sum.example} className={classes.sum}>
+              {i + 1}) {sum.example}={isAnswersVisible && <span style={{ color: 'green' }}>{sum.answer}</span>}
             </Typography>
           </Grid>
         ))}
       </Grid>
+      {sums.length > 0 && (
+        <Button variant='contained' color='secondary' onClick={showAnswers}>
+          {isAnswersVisible ? 'Скрыть ответы' : 'Показать ответы'}
+        </Button>
+      )}
     </Grid>
   )
 }

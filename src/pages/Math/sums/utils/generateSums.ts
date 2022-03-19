@@ -1,24 +1,9 @@
 import { MathSums } from '../../types/math.interface'
+import { generateExample, generateNumsArray } from './common'
 
-export const generateNumsArray = (depth = 2, maxNumber = 99): number[] => {
-  const res: number[] = []
+const difficultyLevelForDivision = 1
 
-  for (let i = 0; i < depth; i++) {
-    res.push(Math.floor(Math.random() * maxNumber + 1))
-  }
-
-  return res
-}
-
-const generateExample = (arr: number[], depth: number, type: string): string => {
-  let res = ''
-  for (let i = 0; i < depth; i++) {
-    res += i === depth - 1 ? arr[i] : `${arr[i]}${type}`
-  }
-  return res
-}
-
-export const createPlusMultipleExamples = (depth = 2, maxNumber = 99, type: string): MathSums => {
+const createPlusMultipleExamples = (depth = 2, maxNumber = 99, type: string): MathSums => {
   const arr = generateNumsArray(depth, maxNumber)
   const example = generateExample(arr, depth, type)
 
@@ -28,7 +13,7 @@ export const createPlusMultipleExamples = (depth = 2, maxNumber = 99, type: stri
   }
 }
 
-export const createMinusExamples = (depth = 2, maxNumber = 99, type: string): MathSums => {
+const createMinusDivideExamples = (depth = 2, maxNumber = 99, type: string): MathSums => {
   const arr = generateNumsArray(depth, maxNumber)
   let tmpType = ''
   if (type === '-') {
@@ -38,9 +23,12 @@ export const createMinusExamples = (depth = 2, maxNumber = 99, type: string): Ma
   }
 
   const answer = eval(generateExample(arr, depth, tmpType))
-
+  let example = `${answer}${type}`
+  for (let i = 1; i < arr.length; i++) {
+    example += i !== arr.length - 1 ? `${arr[i]}${type}` : arr[i]
+  }
   return {
-    example: `${answer}${type}${arr[0]}`.replaceAll('/', ':'),
-    answer: arr[1],
+    example: example.replaceAll('/', ':'),
+    answer: arr[0],
   }
 }

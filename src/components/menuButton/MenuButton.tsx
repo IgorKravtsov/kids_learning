@@ -45,7 +45,7 @@ const MenuButton: React.FC<ToggleButtonProps> = (
 
   return (
     <>
-      <ButtonGroup style={style} variant='contained' ref={anchorRef} aria-label='split button' className={className} {...otherProps}>
+      <ButtonGroup style={style} variant='contained' ref={anchorRef} aria-label='split button' className={className}>
         {/* <Button onClick={onClick}>примеры 2 класс ({options[selectedIndex]})</Button> */}
         <Button onClick={onClick}>{children}</Button>
         <Button
@@ -59,7 +59,7 @@ const MenuButton: React.FC<ToggleButtonProps> = (
           <ArrowDropDownIcon />
         </Button>
       </ButtonGroup>
-      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
