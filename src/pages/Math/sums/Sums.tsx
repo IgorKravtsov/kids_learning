@@ -36,6 +36,8 @@ const Sums: React.FC = (): React.ReactElement => {
   const [nowForm, setNowForm] = useState(0)
 
   const createExamplesByType = (depth = 2, maxNumber = 99, type = '+'): MathSums => {
+    console.log(type)
+
     switch (type) {
       case '+':
         return createPlusExamples(depth, maxNumber)
@@ -71,8 +73,9 @@ const Sums: React.FC = (): React.ReactElement => {
 
     for (let i = 0; i < exampleCount; i++) {
       if (type === 'все') {
-        const operationsLength = nowForm === 2 ? mathOperations.length : mathOperations2Form.length
+        const operationsLength = nowForm === 4 ? mathOperations.length : mathOperations2Form.length
         const rand = Math.floor(Math.random() * operationsLength - 1)
+        console.log(`${i})` + rand)
         tmpType = mathOperations[rand]
       }
       res.push(createExamplesByType(depth, maxNumber, tmpType))
