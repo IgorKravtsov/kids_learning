@@ -12,4 +12,16 @@ export const useSumsStyles = makeStyles({
     fontWeight: 300,
     marginTop: '10px',
   },
+  answer: {
+    fontWeight: 600,
+    color: 'darkblue',
+  },
+  showAnswersBtn: {
+    marginLeft: 'auto',
+    marginTop: '25px',
+    marginBottom: '30px',
+  },
+  depthLevel: {
+    marginTop: '5px',
+  },
 })
