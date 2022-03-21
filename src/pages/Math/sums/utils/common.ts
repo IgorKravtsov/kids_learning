@@ -15,3 +15,14 @@ export const generateExample = (arr: number[], depth: number, type: string): str
   }
   return res
 }
+
+export function shuffleArray<T>(arr: T[]): T[] {
+  const res: T[] = [...arr]
+  for (let i = res.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    let temp = res[i]
+    res[i] = res[j]
+    res[j] = temp
+  }
+  return res
+}

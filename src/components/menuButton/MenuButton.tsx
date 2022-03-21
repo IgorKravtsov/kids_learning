@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 
 import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
@@ -11,21 +11,26 @@ import MenuItem from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 import { ButtonBaseProps } from '@mui/material'
 
-export interface ToggleButtonProps extends ButtonBaseProps {
-  options: string[]
-  setCurrentOption: (str: string) => void
+export interface ToggleButtonProps<T> extends ButtonBaseProps {
+  options: T[]
+  setCurrentOption: (str: T) => void
   onClick: () => void
 }
 
-const MenuButton: React.FC<ToggleButtonProps> = (
-  { options, onClick, setCurrentOption, style, children, className },
-  otherProps
-): React.ReactElement => {
+function MenuButton<T>({
+  options,
+  onClick,
+  setCurrentOption,
+  style,
+  children,
+  className,
+}: PropsWithChildren<ToggleButtonProps<T>>): React.ReactElement {
+  // { options, onClick, setCurrentOption, style, children, className }
   const [open, setOpen] = useState(false)
   const anchorRef = React.useRef<HTMLDivElement>(null)
   const [selectedIndex, setSelectedIndex] = React.useState(1)
 
-  const handleMenuItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, option: string, index: number) => {
+  const handleMenuItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, option: T, index: number) => {
     setSelectedIndex(index)
     setCurrentOption(option)
     setOpen(false)
@@ -71,7 +76,7 @@ const MenuButton: React.FC<ToggleButtonProps> = (
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id='split-button-menu'>
                   {options.map((option, index) => (
-                    <MenuItem key={option} selected={index === selectedIndex} onClick={event => handleMenuItemClick(event, option, index)}>
+                    <MenuItem key={index} selected={index === selectedIndex} onClick={e => handleMenuItemClick(e, option, index)}>
                       {option}
                     </MenuItem>
                   ))}
