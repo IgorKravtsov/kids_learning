@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/kids_learning/static/css/main.91e11c19.css",
-    "main.js": "/kids_learning/static/js/main.3ae563be.js",
-    "static/media/math-2.jpg": "/kids_learning/static/media/math-2.1c6afc4d0bd092059962.jpg",
+    "main.css": "/kids_learning/static/css/main.dfcbe501.css",
+    "main.js": "/kids_learning/static/js/main.ae05fbc9.js",
     "index.html": "/kids_learning/index.html",
-    "main.91e11c19.css.map": "/kids_learning/static/css/main.91e11c19.css.map",
-    "main.3ae563be.js.map": "/kids_learning/static/js/main.3ae563be.js.map"
+    "main.dfcbe501.css.map": "/kids_learning/static/css/main.dfcbe501.css.map",
+    "main.ae05fbc9.js.map": "/kids_learning/static/js/main.ae05fbc9.js.map"
   },
   "entrypoints": [
-    "static/css/main.91e11c19.css",
-    "static/js/main.3ae563be.js"
+    "static/css/main.dfcbe501.css",
+    "static/js/main.ae05fbc9.js"
   ]
 }
