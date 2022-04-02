@@ -4,6 +4,7 @@ export enum RouteNames {
   UKRAINIAN = '/ukrainian',
   RUSSIAN = '/russian',
   ART = '/art',
+  SCHOOL_BOOKS = '/schoolbooks',
 }
 
 export const BookRoutes = {
@@ -15,4 +16,9 @@ export const BookRoutes = {
 
 export const MathRoutes = {
   SUMS: RouteNames.MATH + '/sums',
+}
+
+export const FormRoutes = {
+  SECOND: RouteNames.SCHOOL_BOOKS + '/2-form',
+  FOURTH: RouteNames.SCHOOL_BOOKS + '/4-form',
 }
