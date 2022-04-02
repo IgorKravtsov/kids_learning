@@ -15,6 +15,7 @@ export const BookRoutes = {
 }
 
 export const MathRoutes = {
+  BOOKS: RouteNames.MATH + '/books',
   SUMS: RouteNames.MATH + '/sums',
 }
 

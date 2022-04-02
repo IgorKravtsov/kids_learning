@@ -1,22 +1,44 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import styles from './math.module.scss'
 
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 import Container from '@mui/material/Container'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 
-import { MenuItem, subjects } from '../../subjects'
+import { MenuItem, subjects } from 'subjects'
+import { MathRoutes } from 'routes'
+
+enum MathPageTabs {
+  BOOKS = 0,
+  SUMS = 1,
+}
 
 const Math: React.FC = (): React.ReactElement => {
-  const [value, setValue] = React.useState(0)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const getTabValue = (locationPathname: string) => {
+    if (locationPathname.endsWith(MathRoutes.BOOKS)) {
+      return MathPageTabs.BOOKS
+    } else if (locationPathname.endsWith(MathRoutes.SUMS)) {
+      return MathPageTabs.SUMS
+    } else navigate(MathRoutes.BOOKS)
+    return MathPageTabs.BOOKS
+  }
+
+  const [value, setValue] = React.useState(getTabValue(location.pathname))
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
 
   const mathMenuItems = useMemo(() => subjects.find((subject: MenuItem) => subject.name === 'Математика')?.items, [subjects])
+
+  useEffect(() => {
+    setValue(getTabValue(location.pathname))
+  }, [location])
 
   return (
     <Container>

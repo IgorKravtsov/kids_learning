@@ -11,13 +11,14 @@ import { SchoolBookToOpen } from '../../pages/Schoolbooks/books'
 
 export interface SchoolCardProps {
   book: SchoolBookToOpen
+  form: number
 }
 
-const SchoolCard: React.FC<SchoolCardProps> = ({ book }): React.ReactElement => {
-  const { authors, image, name, path, form } = book
+const SchoolCard: React.FC<SchoolCardProps> = ({ book, form }): React.ReactElement => {
+  const { authors, image, name, path } = book
 
   const imagePath = image
-    ? `${process.env.PUBLIC_URL}/img/${image}`
+    ? `${process.env.PUBLIC_URL}/schoolbooks/${form}Class/img/${image}`
     : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJXpNDdPVhskxm3aDO3dJUHHfTgdfF-D-Y4Q&usqp=CAU'
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -26,8 +27,11 @@ const SchoolCard: React.FC<SchoolCardProps> = ({ book }): React.ReactElement => 
         <Typography gutterBottom variant='h5' component='div'>
           {name}
         </Typography>
+        <Typography variant='h6' color='text.secondary'>
+          {form} клас
+        </Typography>
         <Typography variant='body2' color='text.secondary'>
-          Автори: {authors.join(' ')}
+          {authors.length > 0 && `Автори: ${authors.join(', ')}`}
         </Typography>
       </CardContent>
       <CardActions>
