@@ -141,7 +141,7 @@ const Sums: React.FC = (): React.ReactElement => {
       <Grid container alignItems='center' className={styles.btn_container}>
         <Grid item xs={6}>
           <MenuButton onClick={handleClick2Form} options={mathOperations2Form} setCurrentOption={setCurrSumsType2Form}>
-            Примеры 2 класс ({currSumsType2Form})
+            Приклади 2 класс ({currSumsType2Form})
           </MenuButton>
 
           <Grid item xs={8} className={classes.depthLevel}>
@@ -163,7 +163,7 @@ const Sums: React.FC = (): React.ReactElement => {
 
         <Grid item xs={6}>
           <MenuButton onClick={handleClick4Form} options={mathOperations} setCurrentOption={setCurrSumsType4Form} className={classes.menuButton}>
-            Примеры 4 класс ({currSumsType4Form})
+            Приклади 4 класс ({currSumsType4Form})
           </MenuButton>
 
           <Grid item xs={8} className={classes.depthLevel}>

@@ -25,8 +25,8 @@ export const subjects: MenuItem[] = [
     icon: <MathIcon />,
     link: RouteNames.MATH,
     items: [
-      { id: Math.random().toString(36).substring(2, 7), name: 'Учебники', icon: <BookIcon />, link: BookRoutes.MATH },
-      { id: Math.random().toString(36).substring(2, 7), name: 'Примеры', icon: <SumsIcon />, link: MathRoutes.SUMS },
+      { id: Math.random().toString(36).substring(2, 7), name: 'Книги', icon: <BookIcon />, link: BookRoutes.MATH },
+      { id: Math.random().toString(36).substring(2, 7), name: 'Приклади', icon: <SumsIcon />, link: MathRoutes.SUMS },
     ],
   },
   {
